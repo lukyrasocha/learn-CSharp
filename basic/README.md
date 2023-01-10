@@ -12,7 +12,9 @@ Create a new .NET project
 
 
 Execute .NET project
+
 `dotnet run`
 
 Compile .NET project
+
 `dotnet build`
