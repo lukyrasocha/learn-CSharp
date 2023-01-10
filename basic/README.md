@@ -1,6 +1,7 @@
 # Basic dotnet commands
 
 Create a new .NET project
+
 `dotnet new [TEMPLATE] -o [NEW-FOLDER-NAME]`
 
 - TEMPLATE depends on what type of application it is
@@ -11,7 +12,9 @@ Create a new .NET project
 
 
 Execute .NET project
+
 `dotnet run`
 
 Compile .NET project
+
 `dotnet build`
