@@ -1,56 +1,50 @@
 using utils;
 
 namespace Ciphers {
-
     public class Caesar {
-
-        public string[] encrypt(int key, string fileName){
+        public static List<string> encrypt(int key, string fileName){
             string[] plainLines = ReadFile.ReadAllLines(fileName);
-            string[] encryptedLines = new string[plainLines.Length];
+            List<string> encryptedLines = new List<string>(); 
 
             foreach (string line in plainLines){
-                string encryptedLine = "";
-                foreach(char character in line){
-                    if (character != ' '){
-                        int charCode = (int) character - 96;                  // To get a range 1-26 as in the alphabet;
-                        int encryptedCharCode = ((charCode + key) % 26) + 96; 
+                char[] chars = line.ToCharArray();
 
-                        encryptedLine += (char) encryptedCharCode;
-
-                    } else{
-                        encryptedLine += ' ';
+                for (int i = 0; i < chars.Length; i++){
+                    char character = chars[i];
+                    if (char.IsLetter(character)){
+                        int offset = char.IsUpper(character) ? 'A' : 'a';   // Make the range 1-26 (like an alphabet)
+                        character = (char)((character + key - offset) % 26 + offset);
                     }
-
+                    chars[i] = character; // Write the encrypted character back
                 }
 
-                encryptedLines.Append(encryptedLine);
+                encryptedLines.Add(new string(chars));
             }
+
             return encryptedLines;
         }
 
-        public string[] decrypt(int key, string fileName){
+        public static List<string> decrypt(int key, string fileName){
             string[] encryptedLines = ReadFile.ReadAllLines(fileName);
-            string[] decryptedLines = new string[encryptedLines.Length];
+            List<string> decryptedLines = new List<string>(); 
 
             foreach (string line in encryptedLines){
-                string decryptedLine = "";
-                foreach(char character in line){
-                    if (character != ' '){
-                        int charCode = (int) character - 96; // To get a range 1-26 as in an alphabet;
-                        int encryptedCharCode = (charCode - key) % 26; 
+                char[] chars = line.ToCharArray();
 
-                        decryptedLine += (char) encryptedCharCode;
-
-                    } else{
-                        decryptedLine += ' ';
+                for (int i = 0; i < chars.Length; i++){
+                    char character = chars[i];
+                    if (char.IsLetter(character)){
+                        int offset = char.IsUpper(character) ? 'A' : 'a'; // Make the range 1-26 (like in an alphabet)
+                        character = (char)(((character - key - offset) + 26) % 26 + offset);
                     }
+                    chars[i] = character; // Write the decrypted character back
 
                 }
 
-                decryptedLines.Append(decryptedLine);
+                decryptedLines.Add(new string(chars));
             }
+
             return decryptedLines;
         }
-
     }
 }
