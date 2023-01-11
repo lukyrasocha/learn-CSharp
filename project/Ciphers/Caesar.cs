@@ -1,7 +1,15 @@
 using utils;
 
 namespace Ciphers {
+    /// <summary>
+    /// This class represents a Caesar cipher which is a simple substitution code determined by a key k. 
+    /// </summary>
     public class Caesar {
+        /// <summary>
+        /// Encrypts given plain text
+        /// </summary>
+        /// <param name="key">key that determines by how many places to shift</param>
+        /// <param name="fileName">location of the file to encrypt</param>
         public static List<string> encrypt(int key, string fileName){
             string[] plainLines = ReadFile.ReadAllLines(fileName);
             List<string> encryptedLines = new List<string>(); 
@@ -24,6 +32,11 @@ namespace Ciphers {
             return encryptedLines;
         }
 
+        /// <summary>
+        /// Decrypts given encrypted text
+        /// </summary>
+        /// <param name="key">key that determines by how many places to shift</param>
+        /// <param name="fileName">location of the file to decrypt</param>
         public static List<string> decrypt(int key, string fileName){
             string[] encryptedLines = ReadFile.ReadAllLines(fileName);
             List<string> decryptedLines = new List<string>(); 
