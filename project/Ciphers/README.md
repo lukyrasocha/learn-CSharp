@@ -14,7 +14,9 @@ Build the executable file
 
 `dotnet build`
 
-Find the executable file in the `bin` folder
+Find the executable file in the `bin` folder and execute it
+
+`./caesar [KEY] [FILE]` optionally add `-d` for decryption
 
 Encrypt a file
 
