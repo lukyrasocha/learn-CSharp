@@ -21,7 +21,7 @@ namespace Ciphers {
                     char character = chars[i];
                     if (char.IsLetter(character)){
                         int offset = char.IsUpper(character) ? 'A' : 'a';   // Make the range 1-26 (like an alphabet)
-                        character = (char)((character + key - offset) % 26 + offset);
+                        character = (char)((character + key - offset) % 26 + offset); // Encrypt character
                     }
                     chars[i] = character; // Write the encrypted character back
                 }
@@ -48,7 +48,7 @@ namespace Ciphers {
                     char character = chars[i];
                     if (char.IsLetter(character)){
                         int offset = char.IsUpper(character) ? 'A' : 'a'; // Make the range 1-26 (like in an alphabet)
-                        character = (char)(((character - key - offset) + 26) % 26 + offset);
+                        character = (char)(((character - key - offset) + 26) % 26 + offset); // Decrypt a character
                     }
                     chars[i] = character; // Write the decrypted character back
 
