@@ -4,13 +4,9 @@
 
 Clone the repo 
 
----
-
 `git clone https://github.com/lukyrasocha/learn-CSharp.git`
 
 Change the directory
-
----
 
 `cd learn-CSharp/project/Ciphers`
 
